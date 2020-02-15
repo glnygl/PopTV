@@ -14,7 +14,7 @@ final class ShowDetailView: BaseXibView, BaseViewProtocol {
     typealias ControllerType = ShowDetailController
     
     var viewModel: ShowDetailViewModel?
-    var controller: ShowDetailController?
+    weak var controller: ShowDetailController?
     
     @IBOutlet weak var showImageView: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!

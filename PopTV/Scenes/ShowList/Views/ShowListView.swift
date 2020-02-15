@@ -27,12 +27,12 @@ final class ShowListView: BaseXibView, BaseViewProtocol {
     typealias ControllerType = ShowListController
     
     var viewModel: ShowListViewModel?
-    var controller: ShowListController?
+    weak var controller: ShowListController?
     
     func viewModelDidSet() {
         guard let vm = self.viewModel else { return }
         vm.shows.bind(to: self.collectionView.rx.items){(collectionView, row, item) -> UICollectionViewCell in
-            let indexPath = IndexPath(row: row, section: 0)
+            let indexPath = IndexPath(row: row, section: .zero)
             if let cell = collectionView.dequeue(type: CellType.ShowListCollectionCell.rawValue, indexPath: indexPath) as? ShowListCollectionCell{
                 cell.assign(model: item)
                 return cell
@@ -45,6 +45,7 @@ final class ShowListView: BaseXibView, BaseViewProtocol {
 }
 
 extension ShowListView: UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return cellSize
     }

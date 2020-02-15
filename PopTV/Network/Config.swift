@@ -11,6 +11,7 @@ import Alamofire
 struct Keys {
     static let baseURL = "https://api.themoviedb.org"
     static let key = "5de58c29dc743961610d523c39a0955d"
+    static let api = "api_key"
 }
 
 enum Router: URLRequestConvertible {
@@ -50,7 +51,7 @@ enum Router: URLRequestConvertible {
         
         var components = URLComponents(string: Keys.baseURL)!
         components.queryItems = [
-           URLQueryItem(name: "api_key", value: Keys.key)
+            URLQueryItem(name: Keys.api, value: Keys.key)
         ]
 
         var url = try components.asURL()

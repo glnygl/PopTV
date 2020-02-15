@@ -15,7 +15,7 @@ final class ShowListViewModel: BaseViewModelProtocol {
     typealias ControllerType = ShowListController
     
     var view: ShowListView?    
-    var controller: ShowListController?
+    weak var controller: ShowListController?
     
     var shows = BehaviorRelay<[Show]>(value: [])
     let disposeBag = DisposeBag()

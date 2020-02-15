@@ -14,7 +14,7 @@ final class ShowDetailViewModel: BaseViewModelProtocol {
     typealias ControllerType = ShowDetailController
     
     var view: ShowDetailView?
-    var controller: ShowDetailController?
+    weak var controller: ShowDetailController?
     
     var show: Show?
     
