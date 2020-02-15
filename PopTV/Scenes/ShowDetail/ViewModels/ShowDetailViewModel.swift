@@ -8,6 +8,27 @@
 
 import Foundation
 
-class ShowDetailViewModel {
+final class ShowDetailViewModel: BaseViewModelProtocol {
+
+    typealias ViewType = ShowDetailView
+    typealias ControllerType = ShowDetailController
+    
+    var view: ShowDetailView?
+    var controller: ShowDetailController?
+    
+    var show: Show?
+    
+    func setViewModel(controller: BaseController, viewLoadComplete: () -> Void) {
+        guard
+             let controller = controller as? ShowDetailController,
+             let view = controller.view as? ShowDetailView else { return }
+
+         view.viewModel = self
+         view.controller = controller
+         self.controller = controller
+         self.view = view
+         view.viewModelDidSet()
+         viewLoadComplete()
+    }
     
 }

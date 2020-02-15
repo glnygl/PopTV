@@ -10,6 +10,12 @@ import RxCocoa
 
 final class ShowListView: BaseXibView, BaseViewProtocol {
     
+    var cellSize: CGSize {
+        let widthSize = (UIScreen.main.bounds.width - 40)/2
+        let heightSize: CGFloat = 280.0
+        return CGSize(width: widthSize, height: heightSize)
+    }
+    
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
             collectionView.delegate = self
@@ -23,13 +29,9 @@ final class ShowListView: BaseXibView, BaseViewProtocol {
     var viewModel: ShowListViewModel?
     var controller: ShowListController?
     
-    override func setupView() {
-        
-    }
-    
     func viewModelDidSet() {
         guard let vm = self.viewModel else { return }
-        vm.shows.asObservable().bind(to: self.collectionView.rx.items){(collectionView, row, item) -> UICollectionViewCell in
+        vm.shows.bind(to: self.collectionView.rx.items){(collectionView, row, item) -> UICollectionViewCell in
             let indexPath = IndexPath(row: row, section: 0)
             if let cell = collectionView.dequeue(type: CellType.ShowListCollectionCell.rawValue, indexPath: indexPath) as? ShowListCollectionCell{
                 cell.assign(model: item)
@@ -44,23 +46,20 @@ final class ShowListView: BaseXibView, BaseViewProtocol {
 
 extension ShowListView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let widthSize = (UIScreen.main.bounds.width - 40)/2
-        let heightSize = CGFloat(280)
-        return CGSize(width: widthSize, height: heightSize)
+        return cellSize
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let vc = self.viewModel?.controller else { return }
+        let storyboard = UIStoryboard.init(name: StoryboardIdentifier.Main.rawValue, bundle: nil)
+        if let showDetailVC = storyboard.instantiateViewController(withIdentifier: ControllerIdentifier.ShowDetailController.rawValue) as? ShowDetailController {
+            if let show = self.viewModel?.shows.value[indexPath.row] {
+                showDetailVC.viewModel.show = show
+            }
+            vc.navigationController?.pushViewController(showDetailVC, animated: true)
+        }
     }
 }
 
-
-
-
-//let widthSize = UIScreen.main.bounds.width/3-4
-//  let heightSize = UIScreen.main.bounds.height/3.3-4
-//  let layout = UICollectionViewFlowLayout()
-//  // layout.sectionInset = UIEdgeInsetsMake(0, 2, 0, 2)
-//  layout.itemSize = CGSize(width: widthSize, height: heightSize)
-//  layout.minimumInteritemSpacing = 4
-//  layout.minimumLineSpacing = 4
-//
-//  collectionView.collectionViewLayout = layout
 
 

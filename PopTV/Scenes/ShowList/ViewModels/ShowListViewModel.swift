@@ -26,11 +26,10 @@ final class ShowListViewModel: BaseViewModelProtocol {
             let view = controller.view as? ShowListView else { return }
 
         view.viewModel = self
-        view.controller = controller
-        view.viewModelDidSet()
-        
+        view.controller = controller        
         self.controller = controller
         self.view = view
+        view.viewModelDidSet()
         viewLoadComplete()
     }
     

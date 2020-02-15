@@ -8,10 +8,13 @@
 
 import UIKit
 
-class ShowDetailController: BaseController {
+final class ShowDetailController: BaseController {
+    
+    let viewModel = ShowDetailViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.setViewModel(controller: self) { }
     }
 
 }

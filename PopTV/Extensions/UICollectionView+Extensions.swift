@@ -1,5 +1,5 @@
 //
-//  CollectionView+Extensions.swift
+//  UICollectionView+Extensions.swift
 //  PopTV
 //
 //  Created by Gülenay Gül on 15.02.2020.

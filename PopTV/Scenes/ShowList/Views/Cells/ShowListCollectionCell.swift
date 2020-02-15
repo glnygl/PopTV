@@ -6,6 +6,7 @@
 //  Copyright © 2020 glnygl. All rights reserved.
 //
 
+import Alamofire
 import AlamofireImage
 
 class ShowListCollectionCell: UICollectionViewCell {
@@ -14,16 +15,17 @@ class ShowListCollectionCell: UICollectionViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
     
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        posterImage.af_cancelImageRequest()
     }
     
     func assign(model: Show) {
         nameLabel.text = model.name
         ratingLabel.text = String(model.rating ?? 0.0)
-        if let poster = model.poster,  let url = URL(string: "https://image.tmdb.org/t/p/original" + poster) {
-            posterImage.af_setImage(withURL: url)
+        posterImage.image = nil
+        if let poster = model.poster, let url = URL(string: Constants.imgCdnPath + poster) {
+            posterImage.setImageFromUrl(url: url)
         }
     }
     

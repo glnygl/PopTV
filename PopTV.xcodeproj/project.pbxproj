@@ -32,7 +32,8 @@
 		29C4166323F73154008D4427 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C4166223F73154008D4427 /* BaseViewModel.swift */; };
 		29C4166723F743DC008D4427 /* ShowListCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C4166523F743DC008D4427 /* ShowListCollectionCell.swift */; };
 		29C4166823F743DC008D4427 /* ShowListCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29C4166623F743DC008D4427 /* ShowListCollectionCell.xib */; };
-		29C4166A23F74681008D4427 /* CollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C4166923F74681008D4427 /* CollectionView+Extensions.swift */; };
+		29C4166A23F74681008D4427 /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C4166923F74681008D4427 /* UICollectionView+Extensions.swift */; };
+		29C4166E23F81DD4008D4427 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C4166D23F81DD4008D4427 /* UIImageView+Extensions.swift */; };
 		32C1DE973C0DB873C38EDEC1 /* Pods_PopTV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCD0DF4568B9DE632B3ED809 /* Pods_PopTV.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,7 +65,8 @@
 		29C4166223F73154008D4427 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		29C4166523F743DC008D4427 /* ShowListCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowListCollectionCell.swift; sourceTree = "<group>"; };
 		29C4166623F743DC008D4427 /* ShowListCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowListCollectionCell.xib; sourceTree = "<group>"; };
-		29C4166923F74681008D4427 /* CollectionView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionView+Extensions.swift"; sourceTree = "<group>"; };
+		29C4166923F74681008D4427 /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
+		29C4166D23F81DD4008D4427 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		36816AFB0E5DB533B5CCE67E /* Pods-PopTV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopTV.debug.xcconfig"; path = "Target Support Files/Pods-PopTV/Pods-PopTV.debug.xcconfig"; sourceTree = "<group>"; };
 		DF941A57153E310248F22055 /* Pods-PopTV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopTV.release.xcconfig"; path = "Target Support Files/Pods-PopTV/Pods-PopTV.release.xcconfig"; sourceTree = "<group>"; };
 		FCD0DF4568B9DE632B3ED809 /* Pods_PopTV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PopTV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,7 +110,7 @@
 				29C4162F23F6F7D3008D4427 /* Core */,
 				29C4163323F6F84A008D4427 /* Scenes */,
 				29C4163623F6F880008D4427 /* Extensions */,
-				29C4163D23F6FD0A008D4427 /* Contants */,
+				29C4163D23F6FD0A008D4427 /* Constants */,
 			);
 			path = PopTV;
 			sourceTree = "<group>";
@@ -170,7 +172,6 @@
 			isa = PBXGroup;
 			children = (
 				29C4165223F72FA0008D4427 /* Views */,
-				29C4165323F72FA6008D4427 /* Models */,
 				29C4165423F72FAC008D4427 /* ViewModels */,
 				29C4165523F72FBB008D4427 /* ViewControllers */,
 			);
@@ -182,17 +183,18 @@
 			children = (
 				29C4163B23F6FCBF008D4427 /* Data+Extensions.swift */,
 				29C4164A23F72E8C008D4427 /* UIView+Extensions.swift */,
-				29C4166923F74681008D4427 /* CollectionView+Extensions.swift */,
+				29C4166923F74681008D4427 /* UICollectionView+Extensions.swift */,
+				29C4166D23F81DD4008D4427 /* UIImageView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		29C4163D23F6FD0A008D4427 /* Contants */ = {
+		29C4163D23F6FD0A008D4427 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
 				29C4163E23F6FD1F008D4427 /* Enums.swift */,
 			);
-			path = Contants;
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		29C4164023F6FF46008D4427 /* Views */ = {
@@ -236,13 +238,6 @@
 				29C4165823F73010008D4427 /* ShowDetailView.xib */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		29C4165323F72FA6008D4427 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		29C4165423F72FAC008D4427 /* ViewModels */ = {
@@ -413,13 +408,14 @@
 				29C4165F23F730AB008D4427 /* ShowDetailViewModel.swift in Sources */,
 				29C4165B23F7303D008D4427 /* ShowDetailController.swift in Sources */,
 				29C4163A23F6FC74008D4427 /* Service.swift in Sources */,
-				29C4166A23F74681008D4427 /* CollectionView+Extensions.swift in Sources */,
+				29C4166A23F74681008D4427 /* UICollectionView+Extensions.swift in Sources */,
 				29C4165723F73002008D4427 /* ShowDetailView.swift in Sources */,
 				29C4165123F72F81008D4427 /* ShowListController.swift in Sources */,
 				29C4166323F73154008D4427 /* BaseViewModel.swift in Sources */,
 				29C4161C23F6F721008D4427 /* AppDelegate.swift in Sources */,
 				29C4163823F6FA11008D4427 /* Config.swift in Sources */,
 				29C4164523F6FF8E008D4427 /* ShowListModel.swift in Sources */,
+				29C4166E23F81DD4008D4427 /* UIImageView+Extensions.swift in Sources */,
 				29C4164D23F72F11008D4427 /* ShowListView.swift in Sources */,
 				29C4163F23F6FD1F008D4427 /* Enums.swift in Sources */,
 				29C4164723F70328008D4427 /* API.swift in Sources */,
